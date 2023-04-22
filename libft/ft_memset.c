@@ -6,11 +6,11 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:46:03 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/15 19:55:59 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/22 14:21:44 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

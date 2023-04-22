@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 12:08:16 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/15 19:56:05 by asimonin         ###   ########.fr       */
+/*   Created: 2023/04/22 14:16:41 by asimonin          #+#    #+#             */
+/*   Updated: 2023/04/22 14:23:57 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+# include <unistd.h>
+# include <stdlib.h>
 
-{
-	size_t	i;
-	size_t	j;
+void	*ft_memset(void *s, int c, size_t n);
+void	*ft_calloc(size_t count, size_t size);
 
-	i = 0;
-	if (little[0] == '\0')
-		return ((char *)big);
-	while (i < len && big[i])
-	{
-		if (big[i] == little[0])
-		{
-			j = 0;
-			while (big[i + j] == little[j] && little[j] && (i + j) < len)
-				j++;
-			if (little[j] == '\0')
-				return (&((char *)big)[i]);
-		}
-		i++;
-	}
-	return (0);
-}
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+#endif

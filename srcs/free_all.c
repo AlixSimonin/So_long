@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/15 19:37:22 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/22 18:29:12 by asimonin         ###   ########.fr       */
+/*   Created: 2023/04/18 21:23:36 by asimonin          #+#    #+#             */
+/*   Updated: 2023/04/22 17:24:01 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	init(t_map *map, t_data *var)
-{
-	map->nbr_c = 0;
-	map->nbr_e = 0;
-	map->nbr_p = 0;
-	map->x = 0;
-	map->y = 0;
-	var->img_x = 100;
-	var->img_y = 100;
-}
+// void free_mlx(t_data *var, int nb)
+// {
+// 	mlx_destroy_window(var->mlx, var->window);
+// 	mlx_destroy_display(var->mlx);
+// 	free(var->mlx);
+// 	exit(nb);
+// }
 
-int	main(int ac, char **av)
+void free_tab(t_map *map, int nb)
 {
-	t_data	var;
-	t_map	map;
-
-	ft_memset(&var, 0, sizeof(var));
-	if (ac != 2 || check_arg(av[1]) == 1)
+	int i;
+	
+	i = 0;
+	while(i < map->y)
 	{
-		ft_printf("Invalid argument, please input a map.ber\n");
-		exit(1);
+		free(map->map_tab[i]);
+		i++;
 	}
-	if(check_map(av[1], &map))
-		free_tab(&map, 1);
-	//game(&var);
+	free(map->map_tab);
+	if (nb == 1)
+		ft_printf("Error\n");
+	exit(nb);
 }
