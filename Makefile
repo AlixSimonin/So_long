@@ -11,18 +11,24 @@ SRCS			=	srcs/check_arg.c \
 					srcs/main.c \
 					srcs/parsing.c \
 					srcs/free_all.c \
+					srcs/game.c \
+					srcs/img_in_map.c \
+					srcs/move.c \
+					srcs/path.c \
+					srcs/utils.c \
+					srcs/parsing_utils.c \
 
 OBJS			=	${SRCS:.c=.o}
 
 OBJS_GNL		=	${GNL:.c=.o}
 
-MLX_FLAGS		=	minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a -L. -lXext -L. -lX11 met ca dans le compilateur connasse
+MLX_FLAGS		=	minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a -L. -lXext -L. -lX11
 
 HEAD			=	-I includes
 
 CC				=	cc
 
-CFLAGS			=	-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra -g3
 
 DEF_COLOR = \033[0;39m
 GREEN = \033[0;92m
@@ -34,8 +40,7 @@ all				:	${NAME}
 $(NAME): $(OBJS) ${OBJS_GNL}
 	@make -C libft
 	@make -C ft_printf
-	cc $(OBJS) ${OBJS_GNL} ${LIBFT} ${PRINTF} -o $(NAME)
-	@make clean
+	cc $(OBJS) $(MLX_FLAGS) ${OBJS_GNL} ${LIBFT} ${PRINTF} -o $(NAME)
 	@echo "$(GREEN)so_long executable files created!$(DEF_COLOR)"
 
 clean			:

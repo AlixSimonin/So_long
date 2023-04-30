@@ -1,9 +1,11 @@
 NAME = libft.a
 SRCS = 	ft_calloc.c \
 		ft_memset.c \
+		ft_split.c \
 		ft_strlcpy.c \
 		ft_strlen.c \
 		ft_strnstr.c \
+		ft_strdup.c \
 
 OBJS = ${SRCS:.c=.o}
 

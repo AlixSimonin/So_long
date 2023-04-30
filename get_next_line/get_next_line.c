@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:13:30 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/12 19:15:36 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/28 18:57:01 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,10 @@ char	*get_next_line(int fd, int val)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	if (val)
+	if (val == 1)
+	{
 		return (free(stock), NULL);
+	}
 	stock = ft_read_join(fd, stock);
 	if (!stock)
 		return (NULL);

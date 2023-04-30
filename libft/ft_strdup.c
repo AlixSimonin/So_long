@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/18 21:57:33 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/28 19:02:57 by asimonin         ###   ########.fr       */
+/*   Created: 2022/08/23 12:02:08 by asimonin          #+#    #+#             */
+/*   Updated: 2022/11/08 15:39:08 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	size_t	i;
+	char	*tab;
+	int		i;
 
 	i = 0;
-	if (n == 0)
-		return ;
-	while (i < n)
+	tab = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if (!tab)
+		return (NULL);
+	while (s1[i])
 	{
-		((char *)s)[i] = '\0';
+		tab[i] = s1[i];
 		i++;
 	}
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	int		i;
-	void	*str;
-
-	if (size > SIZE_MAX / nmemb)
-		return (NULL);
-	if (size == 0 || nmemb == 0)
-		return (malloc(0));
-	i = nmemb * size;
-	str = malloc(i);
-	if (!str)
-		return (NULL);
-	ft_bzero (str, i);
-	return (str);
+	tab[i] = '\0';
+	return (tab);
 }

@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 16:19:09 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/29 17:43:27 by asimonin         ###   ########.fr       */
+/*   Created: 2023/04/29 17:52:14 by asimonin          #+#    #+#             */
+/*   Updated: 2023/04/30 01:26:10 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../so_long.h"
 
-size_t	strlen_gnl(char *s)
+size_t	ft_strlen_pars(char *s)
 {
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return (&((char *)s)[strlen_gnl(s)]);
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return (&((char *)s)[i]);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_strjoin_gnl(char *s1, char *s2)
+char	*ft_strjoin_pars(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	j;
@@ -53,8 +37,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	}
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc((strlen_gnl(s1) + strlen_gnl(s2) + 1) * sizeof(char));
-	if (str == NULL)
+	str = malloc((ft_strlen_pars(s1) + ft_strlen_pars(s2) + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
 	i = -1;
 	j = 0;
@@ -63,7 +47,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 			str[i] = s1[i];
 	while (s2[j] != '\0')
 		str[i++] = s2[j++];
-	str[strlen_gnl(s1) + strlen_gnl(s2)] = '\0';
+	str[ft_strlen_pars(s1) + ft_strlen_pars(s2)] = '\0';
 	free(s1);
 	return (str);
 }
