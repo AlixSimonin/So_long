@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:08:46 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:30:53 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:09:37 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int		move_up(t_data *var, t_map *map);
 int		move_right(t_data *var, t_map *map);
 int		move_left(t_data *var, t_map *map);
 int		move_down(t_data *var, t_map *map);
-void	floodfill(char **map, int x, int y, t_map *maps);
 
 size_t	ft_strlen_pars(char *s);
 
@@ -79,6 +78,8 @@ void	free_mlx(t_data *var, int nb);
 void	background(t_map *map, t_data *var);
 void	init_img(t_data *var);
 void	ft_free_tab(char **tab);
+void	lolice(t_data *var, int mvt);
+void	floodfill(char **map, int x, int y, t_map *maps);
 
 char	*ft_strjoin_pars(char *s1, char *s2);
 char	**duplicate(char **map, int size);

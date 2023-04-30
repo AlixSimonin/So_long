@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 19:10:22 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:16:17 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:51:08 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	check_len(t_map *map, char *str)
 	int	len;
 
 	len = ft_strlen(str);
-	if (len != map->x || str[0] != '1' || str[len - 2] != '1')
+	if (str[len - 1] == '\n')
+		len -= 1;
+	if (len != map->x || str[0] != '1' || str[len - 1] != '1')
 		return (1);
 	return (0);
 }
@@ -44,9 +46,10 @@ char	*map_in_line(t_map *map, int fd)
 	line = ft_calloc(1, 1);
 	if (!line)
 		return (NULL);
-	map->y = 1;
 	stock = get_next_line(fd, 0);
 	map->x = ft_strlen_pars(stock);
+	if (stock[map->x -1] == '\n')
+		map->x -= 1;
 	while (1)
 	{
 		if (!stock)
@@ -77,6 +80,8 @@ int	check_map(char *ber, t_map *map)
 	int	fd;
 
 	fd = open(ber, O_RDONLY);
+	if (fd == -1)
+		return (1);
 	fill_map(map, fd);
 	if (shape_map(map))
 	{

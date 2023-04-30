@@ -6,18 +6,11 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 19:41:23 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:04:05 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:25:26 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	exit_game(t_data *var)
-{
-	mlx_destroy_window(var->mlx, var->window);
-	mlx_destroy_display(var->mlx);
-	free(var->mlx);
-}
 
 int	escape(t_data *var)
 {
@@ -46,20 +39,14 @@ void	game(t_data *var, t_map *map)
 	var->map = map;
 	var->mlx = mlx_init();
 	if (var->mlx == NULL)
-	{
-		free_tab(map, 1);
-		return ;
-	}
+		return (free_tab(map, 1));
 	var->window = mlx_new_window(var->mlx,
 			(map->x) * 100, (map->y - 1) * 100, "So_long");
 	if (var->window == NULL)
-	{
-		free(var->window);
-		return ;
-	}
+		return (free(var->window));
 	background(map, var);
+	mlx_hook(var->window, DestroyNotify, KeyPressMask, escape, var);
 	mlx_hook(var->window, KeyPress, KeyPressMask, key_hook, var);
 	mlx_loop(var->mlx);
-	exit_game(var);
-	free_tab(map, 0);
+	free_mlx(var, 0);
 }

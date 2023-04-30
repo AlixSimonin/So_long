@@ -6,11 +6,24 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:44:21 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:32:38 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:09:13 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	lolice(t_data *var, int mvt)
+{
+	char	*car;
+
+	mlx_put_image_to_window(var->mlx, var->window, var->wall, 0, 0);
+	car = printf_itoa(mvt);
+	if (car == NULL)
+		free_mlx(var, 1);
+	mlx_string_put(var->mlx, var->window, 25, 25, 0xB533FF, car);
+	ft_printf("tot movement = %d\n", mvt);
+	free(car);
+}
 
 void	init_player(t_data *var)
 {

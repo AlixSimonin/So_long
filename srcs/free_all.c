@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 21:23:36 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:25:23 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 16:31:38 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	free_mlx(t_data *var, int nb)
 	mlx_destroy_display(var->mlx);
 	free(var->mlx);
 	free_tab(var->map, nb);
+	exit(0);
 }
 
 void	ft_free_tab(char **tab)
@@ -57,7 +58,10 @@ void	free_tab(t_map *map, int nb)
 
 	i = 0;
 	if (!map -> map_tab)
-		return ;
+	{
+		ft_printf("Error\n");
+		exit(nb);
+	}
 	while (i < map->y)
 	{
 		free(map->map_tab[i]);
@@ -67,8 +71,8 @@ void	free_tab(t_map *map, int nb)
 	free(map->map_tab);
 	free(map->dup);
 	if (nb == 1)
+	{
 		ft_printf("Error\n");
-	if (nb == 0)
-		ft_printf("Success\n");
-	exit(nb);
+		exit(nb);
+	}
 }

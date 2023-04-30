@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 17:35:18 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:36:29 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 17:09:04 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	move_up(t_data *var, t_map *map)
 		mlx_put_image_to_window(var->mlx, var->window, var->player[1],
 			map->p_x * 100, map->p_y * 100);
 		var->count_move++;
-		ft_printf("tot movement = %d\n", var->count_move);
+		lolice(var, var->count_move);
 	}
 	return (0);
 }
@@ -74,7 +74,7 @@ int	move_right(t_data *var, t_map *map)
 		mlx_put_image_to_window(var->mlx, var->window, var->player[2],
 			map->p_x * 100, map->p_y * 100);
 		var->count_move++;
-		ft_printf("tot movement = %d\n", var->count_move);
+		lolice(var, var->count_move);
 	}
 	return (0);
 }
@@ -103,7 +103,7 @@ int	move_down(t_data *var, t_map *map)
 		mlx_put_image_to_window(var->mlx, var->window, var->player[3],
 			map->p_x * 100, map->p_y * 100);
 		var->count_move++;
-		ft_printf("tot movement = %d\n", var->count_move);
+		lolice(var, var->count_move);
 	}
 	return (0);
 }
@@ -132,7 +132,7 @@ int	move_left(t_data *var, t_map *map)
 		mlx_put_image_to_window(var->mlx, var->window, var->player[4],
 			map->p_x * 100, map->p_y * 100);
 		var->count_move++;
-		ft_printf("tot movement = %d\n", var->count_move);
+		lolice(var, var->count_move);
 	}
 	return (0);
 }

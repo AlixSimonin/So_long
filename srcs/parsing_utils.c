@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 21:28:06 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 03:31:17 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 16:26:29 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	dont_put_sht_in_the_map(t_map *map, char *tab, int y)
 		else if (tab[i] == 'P')
 		{
 			map->p_x = i;
-			map->p_x = y;
+			map->p_y = y;
 			map->nbr_p++;
 		}
 		else if (tab[i] == 'E')
