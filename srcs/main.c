@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 19:37:22 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 17:27:02 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/04/30 21:20:00 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 	if (check_if_c(map.dup) == 1)
 	{
 		free_tab(&map, 0);
-		return (write(1, "t'es une merde, merci\n", 23), 1);
+		return (write(1, "Coin and/or exit cannot be reached\n", 36), 1);
 	}
 	game(&var, &map);
 	return (0);
