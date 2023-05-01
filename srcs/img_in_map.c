@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 21:44:21 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 17:09:13 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:32:11 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	init_player(t_data *var)
 	var->player[4] = mlx_xpm_file_to_image(var->mlx,
 			"assets/4_player.xpm", &var->img_x, &var->img_y);
 	if (!var->player[0] || !var->player[1] || !var->player[2]
-		|| !var->player[3] || !var->player[4])
+		|| !var->player[3] || !var->player[4]
+		|| !var->wall || !var->floor || !var->chest
+		|| !var->exit[1] || !var->exit[0] || !var->eye)
 		free_mlx(var, 1);
 }
 
@@ -48,7 +50,6 @@ void	init_img(t_data *var)
 			"assets/floor.xpm", &var->img_x, &var->img_y);
 	var->wall = mlx_xpm_file_to_image(var->mlx,
 			"assets/wall.xpm", &var->img_x, &var->img_y);
-	init_player(var);
 	var->chest = mlx_xpm_file_to_image(var->mlx,
 			"assets/chest.xpm", &var->img_x, &var->img_y);
 	var->exit[1] = mlx_xpm_file_to_image(var->mlx,
@@ -57,9 +58,7 @@ void	init_img(t_data *var)
 			"assets/exit.xpm", &var->img_x, &var->img_y);
 	var->eye = mlx_xpm_file_to_image(var->mlx,
 			"assets/side_eye.xpm", &var->img_x, &var->img_y);
-	if (!var->wall || !var->floor || !var->chest
-		|| !var->exit[1] || !var->exit[0] || !var->eye)
-		free_mlx(var, 1);
+	init_player(var);
 }
 
 void	background_two(t_map *map, t_data *var, int x, int y)

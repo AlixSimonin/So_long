@@ -6,7 +6,7 @@
 /*   By: asimonin <asimonin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 21:23:36 by asimonin          #+#    #+#             */
-/*   Updated: 2023/04/30 16:31:38 by asimonin         ###   ########.fr       */
+/*   Updated: 2023/05/01 13:25:39 by asimonin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,28 @@
 
 void	free_assets(t_data *var)
 {
-	mlx_destroy_image(var->mlx, var->chest);
-	mlx_destroy_image(var->mlx, var->wall);
-	mlx_destroy_image(var->mlx, var->floor);
-	mlx_destroy_image(var->mlx, var->exit[0]);
-	mlx_destroy_image(var->mlx, var->exit[1]);
-	mlx_destroy_image(var->mlx, var->player[0]);
-	mlx_destroy_image(var->mlx, var->player[1]);
-	mlx_destroy_image(var->mlx, var->player[2]);
-	mlx_destroy_image(var->mlx, var->player[3]);
-	mlx_destroy_image(var->mlx, var->player[4]);
-	mlx_destroy_image(var->mlx, var->eye);
+	if (var -> chest)
+		mlx_destroy_image(var->mlx, var->chest);
+	if (var -> wall)
+		mlx_destroy_image(var->mlx, var->wall);
+	if (var -> floor)
+		mlx_destroy_image(var->mlx, var->floor);
+	if (var -> exit[0])
+		mlx_destroy_image(var->mlx, var->exit[0]);
+	if (var -> exit[1])
+		mlx_destroy_image(var->mlx, var->exit[1]);
+	if (var -> player[0])
+		mlx_destroy_image(var->mlx, var->player[0]);
+	if (var -> player[1])
+		mlx_destroy_image(var->mlx, var->player[1]);
+	if (var -> player[2])
+		mlx_destroy_image(var->mlx, var->player[2]);
+	if (var -> player[3])
+		mlx_destroy_image(var->mlx, var->player[3]);
+	if (var -> player[4])
+		mlx_destroy_image(var->mlx, var->player[4]);
+	if (var -> eye)
+		mlx_destroy_image(var->mlx, var->eye);
 }
 
 void	free_mlx(t_data *var, int nb)
